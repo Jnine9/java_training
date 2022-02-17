@@ -1,1 +1,0 @@
-Java, first week basic learning.
