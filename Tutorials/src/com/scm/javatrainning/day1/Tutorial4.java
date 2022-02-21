@@ -18,13 +18,14 @@ public class Tutorial4 {
 	 * To display the pattern like right angle triangle.
 	 * </p>
 	 *
-	 * @param num - integer
+	 * @param num int
 	 * @return void
 	 */
 	public static void displayEvenPattern(int num) {
+		int x = 0;
 		for (int i = 0; i < num; i++) {
 			for (int j = 0; j < i + 1; j++) {
-				int x = j + 1;
+				x = j + 1;
 				if (x % 2 == 0 || x == 1) {
 					System.out.print(x);
 					if (x != 1) {
@@ -43,7 +44,7 @@ public class Tutorial4 {
 	 * Main method to run project.
 	 * </p>
 	 *
-	 * @param args
+	 * @param args String[]
 	 * @return void
 	 */
 	public static void main(String[] args) {

@@ -17,7 +17,7 @@ public class Tutorial1 {
 	 * Display all number.
 	 * </p>
 	 *
-	 * @param numbers - integer
+	 * @param numbers int
 	 * @return void
 	 */
 	public static void displayNumberBetween(int numbers) {
@@ -32,11 +32,10 @@ public class Tutorial1 {
 	 * Main method to run program.
 	 * </p>
 	 *
-	 * @param args
+	 * @param args String[]
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		displayNumberBetween(100);
 	}
 

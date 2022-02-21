@@ -18,13 +18,14 @@ public class Tutorial3 {
 	 * Display pattern like right angle triangle by limit number.
 	 * </p>
 	 *
-	 * @param num
+	 * @param num int
 	 * @return void
 	 */
 	public static void displayPattern(int num) {
+		int x = 0;
 		for (int i = 0; i < num; i++) {
 			for (int j = 0; j < i + 1; j++) {
-				int x = j + 1;
+				 x = j + 1;
 				System.out.print(x);
 			}
 			System.out.println();
@@ -37,11 +38,10 @@ public class Tutorial3 {
 	 * Main method to run project.
 	 * </p>
 	 *
-	 * @param args
+	 * @param args String[]
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		displayPattern(10);
 	}
 
