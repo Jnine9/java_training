@@ -10,7 +10,6 @@ package com.scm.javatrainning.day1;
  *
  */
 public class Tutorial1 {
-
 	/**
 	 * <h2>displayNumberBetween</h2>
 	 * <p>
@@ -25,7 +24,6 @@ public class Tutorial1 {
 			System.out.print(i + 1 + ", ");
 		}
 	}
-
 	/**
 	 * <h2>main</h2>
 	 * <p>
@@ -38,5 +36,4 @@ public class Tutorial1 {
 	public static void main(String[] args) {
 		displayNumberBetween(100);
 	}
-
 }

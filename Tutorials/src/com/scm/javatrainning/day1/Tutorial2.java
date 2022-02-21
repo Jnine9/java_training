@@ -11,7 +11,6 @@ package com.scm.javatrainning.day1;
  *
  */
 public class Tutorial2 {
-
 	/**
 	 * <h2>oddAndTheirSum</h2>
 	 * <p>
@@ -32,7 +31,6 @@ public class Tutorial2 {
 		}
 		System.out.println("Their sum is : " + sum);
 	}
-
 	/**
 	 * <h2>main</h2>
 	 * <p>

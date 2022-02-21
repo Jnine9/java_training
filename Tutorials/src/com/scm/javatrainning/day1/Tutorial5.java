@@ -10,7 +10,6 @@ package com.scm.javatrainning.day1;
  *
  */
 public class Tutorial5 {
-
 	/**
 	 * <h2>generatePattern</h2>
 	 * <p>
@@ -34,7 +33,6 @@ public class Tutorial5 {
 			System.out.println();
 		}
 	}
-
 	/**
 	 * <h2> main</h2>
 	 * <p>
@@ -47,5 +45,4 @@ public class Tutorial5 {
 	public static void main(String[] args) {
 		generatePattern(6);
 	}
-
 }

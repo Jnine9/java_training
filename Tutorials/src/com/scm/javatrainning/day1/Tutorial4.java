@@ -11,7 +11,6 @@ package com.scm.javatrainning.day1;
  *
  */
 public class Tutorial4 {
-
 	/**
 	 * <h2>displayEvenPattern</h2>
 	 * <p>
@@ -37,7 +36,6 @@ public class Tutorial4 {
 			System.out.println();
 		}
 	}
-
 	/**
 	 * <h2>main</h2>
 	 * <p>
