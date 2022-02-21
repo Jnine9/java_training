@@ -31,7 +31,6 @@ public class Tutorial4 {
 						System.out.print(" ");
 					}
 				}
-
 			}
 			System.out.println();
 		}
@@ -48,5 +47,4 @@ public class Tutorial4 {
 	public static void main(String[] args) {
 		displayEvenPattern(10);
 	}
-
 }
