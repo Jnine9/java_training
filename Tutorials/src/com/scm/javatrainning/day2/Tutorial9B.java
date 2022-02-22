@@ -1,5 +1,6 @@
 package com.scm.javatrainning.day2;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -13,31 +14,33 @@ import java.util.Scanner;
  */
 public class Tutorial9B {
 	/**
-	 * <h2> scn</h2>
+	 * <h2>scn</h2>
 	 * <p>
 	 * Scanner for input
 	 * </p>
 	 */
 	static Scanner scn;
+
 	/**
 	 * <h2>getLargestNumbers</h2>
 	 * <p>
 	 * Get largest number.
 	 * </p>
 	 *
-	 * @param nums int[]
+	 * @param nums long[]
 	 * @return
 	 * @return String
 	 */
-	public static String getLargestNumbers(int[] nums) {
+	public static String getLargestNumbers(long[] nums) {
 		String result = "";
-		int record = 0;
-		for (int x : nums) {
+		long record = 0;
+		for (long x : nums) {
 			record = x > record ? x : record;
 		}
 		result = record + " is the largest number.";
 		return result;
 	}
+
 	/**
 	 * <h2>main</h2>
 	 * <p>
@@ -49,13 +52,28 @@ public class Tutorial9B {
 	 */
 	public static void main(String[] args) {
 		scn = new Scanner(System.in);
-		System.out.print("Test Data\nInput 1st number: ");
-		int a = scn.nextInt();
-		System.out.print("Input the 2nd number: ");
-		int b = scn.nextInt();
-		System.out.print("Input the 3nd number: ");
-		int c = scn.nextInt();
-		int[] ary = { a, b, c };
-		System.out.println(getLargestNumbers(ary));
+		boolean stop = false;
+		String userconfirm = "";
+		System.out.println("Let find the largest number.");
+		do {
+			try {
+				System.out.print("Input 1st number: ");
+				long a = scn.nextInt();
+				System.out.print("Input the 2nd number: ");
+				long b = scn.nextInt();
+				System.out.print("Input the 3nd number: ");
+				long c = scn.nextInt();
+				long[] ary = { a, b, c };
+				System.out.println(getLargestNumbers(ary));
+				System.out.println("Do you want to continue? (y/n)");
+				userconfirm = scn.next();
+				stop = userconfirm.equalsIgnoreCase("y") ? false : true;
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter a valid input.");
+				stop = true;
+				break;
+			}
+		} while (!stop);
+
 	}
 }
