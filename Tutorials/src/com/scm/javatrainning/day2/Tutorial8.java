@@ -19,19 +19,16 @@ public class Tutorial8 {
 	 * @return void
 	 */
 	public static void generateNumPattern() {
-		String[] alpha = {
-				"A","B","C","D","E","F","G","H","I","J",
-				"K","L","M","N","O","P","Q","R","S","T",
-				"U","V","W","X","Y","Z"};
-		int result = 0;
-		for(int i = 1;i<10;i++) {
+		
+		int result = 0,alpha = 65;
+		for(int i = 0;i<10;i++) {
 			if(i==9) {
-				System.out.print(alpha[i-1]+" ");
+				System.out.print((char)(alpha + i - 1)+" ");
 			}else {
 				for(int k = 1;k<=i;k++) {
 					result = k*i;
-					if(result<=alpha.length && i+result <= 30) {
-						System.out.print(alpha[result-1]+" ");
+					if(result<=alpha && i+result <= 30) {
+						System.out.print((char)(alpha + result - 1)+" ");
 					}
 				}
 			}
