@@ -13,36 +13,20 @@ import java.util.Scanner;
  *
  */
 public class Tutorial12C {
+	/**
+	 * <h2> myMap</h2>
+	 * <p>
+	 * myMap Hash Map.
+	 * </p>
+	 */
 	static HashMap<String, String> myMap;
+	/**
+	 * <h2> scn</h2>
+	 * <p>
+	 * User input.
+	 * </p>
+	 */
 	static Scanner scn;
-	/**
-	 * <h2> isKeyExist</h2>
-	 * <p>
-	 * Check key exist or not.
-	 * </p>
-	 *
-	 * @param map HashMap<String, String>
-	 * @param key String
-	 * @return
-	 * @return boolean
-	 */
-	public static boolean isKeyExist(HashMap<String, String> map ,String key) {
-		return map.containsKey(key);
-	}
-	/**
-	 * <h2> getValue</h2>
-	 * <p>
-	 * Get map value by specific key.
-	 * </p>
-	 *
-	 * @param map HashMap<String, String>
-	 * @param key String
-	 * @return
-	 * @return String
-	 */
-	public static String getValue(HashMap<String, String>map,String key) {
-		return map.get(key);
-	}
 	/**
 	 * <h2> main</h2>
 	 * <p>
@@ -65,7 +49,7 @@ public class Tutorial12C {
 			do {
 				System.out.println("Enter key to check if key exist in myMap : ");
 				key = scn.nextLine();
-				res = isKeyExist(myMap, key) ? "Key exist. Key's value is :  " + getValue(myMap, key) : 
+				res = myMap.containsKey(key) ? "Key exist. Key's value is :  " + myMap.get(key) : 
 					"Key doesn't exist!!!";
 				System.out.println(res);
 				System.out.println("Do you want to check again ? (y/n)");
