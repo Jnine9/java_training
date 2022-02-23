@@ -22,18 +22,10 @@ public class Tutorial12B {
 	/**
 	 * <h2> copy</h2>
 	 * <p>
-	 * Copy hash map.
+	 * copy
 	 * </p>
-	 *
-	 * @param original HashMap<String, String>
-	 * @return
-	 * @return HashMap<String,String>
 	 */
-	public static HashMap<String,String> copy(HashMap<String, String>original) {
-		HashMap<String, String> copy = new HashMap<>();
-		copy.putAll(original);
-		return copy;
-	}
+	static HashMap<String, String> copy;
 	/**
 	 * <h2> main</h2>
 	 * <p>
@@ -45,10 +37,11 @@ public class Tutorial12B {
 	 */
 	public static void main(String[] args) {
 		originalMap = new HashMap<>();
+		copy = new HashMap<>();
 		originalMap.put("Admin ", " Mg Mg");
 		originalMap.put("Developer ", " Hsu Hsu");
 		originalMap.put("Client ", " Hla Hla");
-		HashMap<String, String> copy = copy(originalMap);
+		copy.putAll(originalMap);
 		copy.put("System ", " Copied the original one");
 		System.out.println(copy);
 	}
