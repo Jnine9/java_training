@@ -1,5 +1,6 @@
 package com.scm.javatrainning.day3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,6 +13,12 @@ import java.util.Scanner;
  *
  */
 public class Tutorial10B {
+	/**
+	 * <h2> scn</h2>
+	 * <p>
+	 * User input
+	 * </p>
+	 */
 	static Scanner scn;
 	/**
 	 * <h2>removeElementFromArray</h2>
@@ -22,32 +29,27 @@ public class Tutorial10B {
 	 * @param ary     int[]
 	 * @param element int
 	 * @return
-	 * @return int[]
+	 * @return Object[]
 	 */
-	public static int[] removeElementFromArray(int[] ary, int element) {
-		int[] res = new int[ary.length - 1];
+	public static Object[] removeElementFromArray(int[] ary, int element) {
+		ArrayList<Integer> arylist = new ArrayList<Integer>();
+		int index = 0;
 		boolean check = false;
-		int count = 0;
-		for (int x : ary) {
-			if (x == element) {
+		for(int i = 0; i<ary.length;i++) {
+			arylist.add(ary[i]);
+			if(ary[i] == element) {
+				index = i;
 				check = true;
-				continue;
-			}
-			try {
-				res[count] = x;
-				count++;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				System.out.println("Error : The given element do not match in array.");
-				res = new int[0];
-				break;
 			}
 		}
-		if (!check) {
-			System.out.println("Warning : " + element + " is not in the given array.");
+		if(check) {
+			arylist.remove(index);
+			System.out.println(element + " has been removed from array.");
 		} else {
-			System.out.println("Remove " + element + " from array successfully.");
+			System.out.println("Warning : "+ element + " is not an element of array.\n"
+					+ "Status : nothing change.");
 		}
-		return res;
+		return arylist.toArray();
 	}
 	/**
 	 * <h2> main</h2>
@@ -68,8 +70,8 @@ public class Tutorial10B {
 			do {
 				System.out.println("Please enter an integer to remove from curret integer array : ");
 				remover = scn.nextInt();
-				int[] new_ary = removeElementFromArray(ary, remover);
-				for (int x : new_ary) {
+				Object[] new_ary = removeElementFromArray(ary, remover);
+				for (Object x : new_ary) {
 					System.out.println(x);
 				}
 				System.out.println("Do you want to test again ? (y/n)");
