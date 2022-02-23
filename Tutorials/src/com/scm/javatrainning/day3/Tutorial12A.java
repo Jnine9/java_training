@@ -18,41 +18,7 @@ public class Tutorial12A {
 	 * my_map - my hash map.
 	 * </p>
 	 */
-	private HashMap<String, String> my_map;
-	/**
-	 * <h2> Constructor for Tutorial12A </h2>
-	 * <p>
-	 * Constructor for Tutorial12A
-	 * </p>
-	 */
-	public Tutorial12A() {
-		my_map = new HashMap<String,String>();
-	}
-	/**
-	 * <h2> getMyMap</h2>
-	 * <p>
-	 * Get my hash map.
-	 * </p>
-	 *
-	 * @return
-	 * @return HashMap<String,String>
-	 */
-	public HashMap<String, String> getMyMap() {
-		return my_map;
-	}
-	/**
-	 * <h2> addValue</h2>
-	 * <p>
-	 * Add new key and value to my hash map.
-	 * </p>
-	 *
-	 * @param key String
-	 * @param value String
-	 * @return void
-	 */
-	public void addValue(String key,String value) {
-		this.my_map.put(key, value);
-	}
+	static HashMap<String, String> my_map;
 	/**
 	 * <h2> main</h2>
 	 * <p>
@@ -63,9 +29,9 @@ public class Tutorial12A {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		Tutorial12A hashmap = new Tutorial12A();
-		hashmap.addValue("Admin", "Mg Mg");
-		hashmap.addValue("Client", "Hla Hla");
-		System.out.println(hashmap.getMyMap());
+		my_map = new HashMap<>();
+		my_map.put("Admin", "Mg Mg");
+		my_map.put("Client", "Hla Hla");
+		System.out.println(my_map);
 	}
 }
