@@ -14,6 +14,12 @@ import java.util.Scanner;
  *
  */
 public class Tutorial10C {
+	/**
+	 * <h2> scn</h2>
+	 * <p>
+	 * User input
+	 * </p>
+	 */
 	static Scanner scn;
 	/**
 	 * <h2> convertListToArray</h2>
