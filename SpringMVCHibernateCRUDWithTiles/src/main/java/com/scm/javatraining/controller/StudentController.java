@@ -50,27 +50,24 @@ public class StudentController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
-	public ModelAndView addStudent(@Valid@ModelAttribute("student") Student std,BindingResult binder) {
+	public ModelAndView addStudent(@Valid @ModelAttribute("student") Student std, BindingResult binder) {
 		ModelAndView model = new ModelAndView();
-			if (std.isDataNull()) {
-				model = this.dataMissing(std);
-			} else{
-				 if(!binder.hasErrors()) {
-					 model.setViewName("redirect:/students");
-						try {
-							if (studentService.getStudentById(std.getId()) != null)
-								;
-							studentService.updateStudent(std);
-						} catch (NoResultException e) {
-							studentService.addStudent(std);
-						}
-				 }else {
-					 model.addObject("Errors",this.getErrorMessage(binder));
-					 model.setViewName("students");
-				 }
-				
+
+		if (!binder.hasErrors()) {
+			model.setViewName("redirect:/students");
+			try {
+				if (studentService.getStudentById(std.getId()) != null)
+					;
+				studentService.updateStudent(std);
+			} catch (NoResultException e) {
+				studentService.addStudent(std);
 			}
-		
+		} else {
+			List<Student> stdList = studentService.getAllStudents();
+			model.addObject("studentList", stdList);
+			model.setViewName("students");
+		}
+
 		return model;
 	}
 
@@ -136,26 +133,18 @@ public class StudentController {
 	}
 
 	/**
-	 * <h2>dataMissing</h2>
+	 * <h2>getErrorMessage</h2>
 	 * <p>
-	 * Get missing data.
+	 * Get error message
 	 * </p>
 	 *
-	 * @param std Student
+	 * @param binder BindingResult
 	 * @return
-	 * @return ModelAndView
+	 * @return HashMap<String,String>
 	 */
-	public ModelAndView dataMissing(Student std) {
-		ModelAndView model = new ModelAndView("students");
-		List<Student> stdList = studentService.getAllStudents();
-		HashMap<String, String> map = studentService.getMissingData(std);
-		model.addObject("studentList", stdList);
-		model.addObject("dataMissing", map);
-		return model;
-	}
-	public HashMap<String, String> getErrorMessage(BindingResult binder){
+	public HashMap<String, String> getErrorMessage(BindingResult binder) {
 		HashMap<String, String> errorList = new HashMap<String, String>();
-		for(FieldError error : binder.getFieldErrors()) {
+		for (FieldError error : binder.getFieldErrors()) {
 			errorList.put(error.getObjectName(), error.getDefaultMessage());
 		}
 		return errorList;

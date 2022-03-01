@@ -1,6 +1,5 @@
 package com.scm.javatraining.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.scm.javatraining.model.Student;
@@ -70,17 +69,5 @@ public interface StudentService {
 	 * @return void
 	 */
 	public void deleteStudent(Integer id);
-
-	/**
-	 * <h2>dataMissing</h2>
-	 * <p>
-	 * Get missing data list.
-	 * </p>
-	 *
-	 * @param student Student
-	 * @return
-	 * @return HashMap<String,String>
-	 */
-	public HashMap<String, String> getMissingData(Student student);
 
 }

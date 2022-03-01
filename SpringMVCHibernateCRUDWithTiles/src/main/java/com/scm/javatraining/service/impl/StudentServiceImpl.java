@@ -1,6 +1,5 @@
 package com.scm.javatraining.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,35 +96,5 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void deleteStudent(Integer id) {
 		studentDAO.deleteStudent(id);
-	}
-
-	/**
-	 * <h2>getMissingData</h2>
-	 * <p>
-	 * Get missing data.
-	 * </p>
-	 * 
-	 * @param student Student
-	 * @return
-	 */
-	@Override
-	public HashMap<String, String> getMissingData(Student student) {
-		// TODO Auto-generated method stub
-		HashMap<String, String> map = new HashMap<String, String>();
-		if (student.isDataNull()) {
-			if (student.getName() == "") {
-				map.put("name", "<span style='color: red;'>Please insert <b><i>Name</i></b>.");
-			}
-			if (student.getRoll() == "") {
-				map.put("roll", "<span style='color: red;'>Please insert <b><i>Roll No</i></b>.");
-			}
-			if (student.getAge() == null) {
-				map.put("age", "<span style='color: red;'>Please insert <b><i>Age</i></b>.");
-			}
-			if (student.getGender() == "") {
-				map.put("gender", "<span style='color: red;'>Please insert <b><i>Gender</i></b>.");
-			}
-		}
-		return map;
 	}
 }

@@ -8,27 +8,10 @@
 <%
 String path = request.getContextPath();
 
-String id = "", name = "", roll = "", age = "", gender = "",error="";
-boolean onerror=false;
-if (request.getAttribute("dataMissing") != null) {
-	@SuppressWarnings("unchecked")
-	HashMap<String, String> map = (HashMap<String, String>) request.getAttribute("dataMissing");
-	name = map.containsKey("name") ? map.get("name") : "";
-	roll = map.containsKey("roll") ? map.get("roll") : "";
-	age = map.containsKey("age") ? map.get("age") : "";
-	gender = map.containsKey("gender") ? map.get("gender") : "";
-}
+String id = "";
 Integer ids = null;
 if (request.getAttribute("id") != null) {
 	ids = (int) request.getAttribute("id");
-}
-HashMap<String,String> e = null;
-if(request.getAttribute("Errors") != null){
-	onerror=true;
-	@SuppressWarnings("unchecked")
-	HashMap<String,String> errors = (HashMap<String, String>) request.getAttribute("Errors");
-	e=errors;
-	System.out.println(e);
 }
 %>
 <!DOCTYPE html>
@@ -61,36 +44,6 @@ if(request.getAttribute("Errors") != null){
 <body>
 		<div class="wrapper">
 				
-				<div class="message-field">
-								<%
-							if(onerror){
-								%>
-						<p style="color:orange;text-align:center;">Something went wrong!!!</p>
-						<table class="table table-bordered" style="width: 400px">
-								<tr>
-										<th>Error</th>
-										<th>Message</th>
-								</tr>
-								<%
-								String key="",value="";
-								for(Map.Entry<String,String> err : e.entrySet()){
-									key = err.getKey();
-									value = err.getValue();
-									%>
-
-								<tr>
-										<td><%=key %></td>
-										<td><%=value %></td>
-								</tr>
-
-								<%								
-									}
-								%>
-						</table>
-						<%
-							}
-						%>
-				</div>
 				<br>
 				<h3>Student Data</h3>
 				<form:form method="post"
@@ -100,7 +53,9 @@ if(request.getAttribute("Errors") != null){
 								<table class="table table-bordered" style="width: 500px">
 										<tr>
 												<td>Name :</td>
-												<td><form:input type="text" path="name" /><br><%=name%></td>
+												<td><form:input type="text" path="name" />
+													<i style="color:orange;"><form:errors path="name" cssClass="error"/></i>
+												</td>
 												<%
 												//We don't want to let user edit default id.
 												if (ids != null) {
@@ -113,15 +68,21 @@ if(request.getAttribute("Errors") != null){
 										</tr>
 										<tr>
 												<td>Roll No :</td>
-												<td><form:input type="text" path="roll" /><br><%=roll%></td>
+												<td><form:input type="text" path="roll" />
+													<i style="color:orange;"><form:errors path="roll" cssClass="error"/></i>
+												</td>
 										</tr>
 										<tr>
 												<td>Age :</td>
-												<td><form:input type="number" path="age" /><br><%=age%></td>
+												<td><form:input type="number" path="age" />
+													<i style="color:orange;"><form:errors path="age" cssClass="error"/></i>
+												</td>
 										</tr>
 										<tr>
 												<td>Gender :</td>
-												<td><form:input type="text" path="gender" /><br><%=gender%></td>
+												<td><form:input type="text" path="gender" />
+													<i style="color:orange;"><form:errors path="gender" cssClass="error"/></i>
+												</td>
 										</tr>
 										<tr>
 												<td></td>

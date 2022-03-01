@@ -9,10 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.BatchSize;
 
 /**
  * <h2>Student Class</h2>
@@ -51,8 +50,7 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Column
-	@NotNull
-	@Size(min = 2, message = "Name too short")
+	@Size(min = 4, message = "Name is too short")
 	private String name;
 	/**
 	 * <h2>roll</h2>
@@ -61,7 +59,7 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Column
-	@NotNull(message = "Please enter roll number.")
+	@NotBlank(message = "Please enter Roll No.")
 	private String roll;
 	/**
 	 * <h2>age</h2>
@@ -70,8 +68,7 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Column
-	@NotNull(message = "Student age must greater than 6.")
-	@Min(6)
+	@Min(value = 6,message="Student age must greater than 6.")
 	private Integer age;
 	/**
 	 * <h2>gender</h2>
@@ -80,7 +77,7 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Column
-	@NotNull(message = "Please enter gender.")
+	@NotBlank(message = "Please enter gender.")
 	private String gender;
 
 	/**
