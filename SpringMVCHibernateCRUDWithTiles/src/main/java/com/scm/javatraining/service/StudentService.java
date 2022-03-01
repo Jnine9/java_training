@@ -6,7 +6,7 @@ import java.util.List;
 import com.scm.javatraining.model.Student;
 
 /**
- * <h2> StudentService Class</h2>
+ * <h2>StudentService Class</h2>
  * <p>
  * Process for Displaying StudentService
  * </p>
@@ -16,7 +16,7 @@ import com.scm.javatraining.model.Student;
  */
 public interface StudentService {
 	/**
-	 * <h2> addStudent</h2>
+	 * <h2>addStudent</h2>
 	 * <p>
 	 * Add new Student.
 	 * </p>
@@ -25,8 +25,9 @@ public interface StudentService {
 	 * @return void
 	 */
 	public void addStudent(Student student);
+
 	/**
-	 * <h2> getAllStudents</h2>
+	 * <h2>getAllStudents</h2>
 	 * <p>
 	 * Get all student.
 	 * </p>
@@ -35,8 +36,9 @@ public interface StudentService {
 	 * @return List<Student>
 	 */
 	public List<Student> getAllStudents();
+
 	/**
-	 * <h2> getStudentById</h2>
+	 * <h2>getStudentById</h2>
 	 * <p>
 	 * Get student by ID.
 	 * </p>
@@ -46,8 +48,9 @@ public interface StudentService {
 	 * @return Student
 	 */
 	public Student getStudentById(Integer id);
+
 	/**
-	 * <h2> updateStudent</h2>
+	 * <h2>updateStudent</h2>
 	 * <p>
 	 * Update student.
 	 * </p>
@@ -56,8 +59,9 @@ public interface StudentService {
 	 * @return void
 	 */
 	public void updateStudent(Student student);
+
 	/**
-	 * <h2> deleteStudent</h2>
+	 * <h2>deleteStudent</h2>
 	 * <p>
 	 * Delete student.
 	 * </p>
@@ -66,8 +70,9 @@ public interface StudentService {
 	 * @return void
 	 */
 	public void deleteStudent(Integer id);
+
 	/**
-	 * <h2> dataMissing</h2>
+	 * <h2>dataMissing</h2>
 	 * <p>
 	 * Get missing data list.
 	 * </p>
@@ -77,5 +82,5 @@ public interface StudentService {
 	 * @return HashMap<String,String>
 	 */
 	public HashMap<String, String> getMissingData(Student student);
-	
+
 }

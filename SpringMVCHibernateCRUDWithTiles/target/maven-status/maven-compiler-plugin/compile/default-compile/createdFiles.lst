@@ -3,5 +3,4 @@ com\scm\javatraining\dao\StudentDAO.class
 com\scm\javatraining\dao\impl\StudentDAOImpl.class
 com\scm\javatraining\model\Student.class
 com\scm\javatraining\controller\StudentController.class
-com\scm\javatraining\util\HibernateUtil.class
 com\scm\javatraining\service\impl\StudentServiceImpl.class

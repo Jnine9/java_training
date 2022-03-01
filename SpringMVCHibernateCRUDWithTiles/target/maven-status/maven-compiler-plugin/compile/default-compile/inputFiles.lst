@@ -1,7 +1,6 @@
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\service\impl\StudentServiceImpl.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\dao\StudentDAO.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\dao\impl\StudentDAOImpl.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\util\HibernateUtil.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\controller\StudentController.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\service\StudentService.java
-D:\MavenWorkspace\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\model\Student.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\dao\impl\StudentDAOImpl.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\service\StudentService.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\service\impl\StudentServiceImpl.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\dao\StudentDAO.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\model\Student.java
+C:\Users\Acer\git\java_training\SpringMVCHibernateCRUDWithTiles\src\main\java\com\scm\javatraining\controller\StudentController.java

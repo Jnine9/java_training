@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.scm.javatraining.model.Student;
 import com.scm.javatraining.service.StudentService;
 
-
 /**
- * <h2> StudentController Class</h2>
+ * <h2>StudentController Class</h2>
  * <p>
  * Process for Displaying StudentController
  * </p>
@@ -48,22 +50,27 @@ public class StudentController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/student", method = RequestMethod.POST)
-	public ModelAndView addStudent(@ModelAttribute("student") Student std) {
+	public ModelAndView addStudent(@Valid@ModelAttribute("student") Student std,BindingResult binder) {
 		ModelAndView model = new ModelAndView();
-
-		if (std.isDataNull()) {
-			model = this.dataMissing(std);
-		} else {
-			model.setViewName("redirect:/students");
-			try {
-				if (studentService.getStudentById(std.getId()) != null)
-					;
-				studentService.updateStudent(std);
-			} catch (NoResultException e) {
-				studentService.addStudent(std);
+			if (std.isDataNull()) {
+				model = this.dataMissing(std);
+			} else{
+				 if(!binder.hasErrors()) {
+					 model.setViewName("redirect:/students");
+						try {
+							if (studentService.getStudentById(std.getId()) != null)
+								;
+							studentService.updateStudent(std);
+						} catch (NoResultException e) {
+							studentService.addStudent(std);
+						}
+				 }else {
+					 model.addObject("Errors",this.getErrorMessage(binder));
+					 model.setViewName("students");
+				 }
+				
 			}
-
-		}
+		
 		return model;
 	}
 
@@ -145,5 +152,12 @@ public class StudentController {
 		model.addObject("studentList", stdList);
 		model.addObject("dataMissing", map);
 		return model;
+	}
+	public HashMap<String, String> getErrorMessage(BindingResult binder){
+		HashMap<String, String> errorList = new HashMap<String, String>();
+		for(FieldError error : binder.getFieldErrors()) {
+			errorList.put(error.getObjectName(), error.getDefaultMessage());
+		}
+		return errorList;
 	}
 }

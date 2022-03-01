@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.BatchSize;
 
 /**
- * <h2> Student Class</h2>
+ * <h2>Student Class</h2>
  * <p>
  * Process for Displaying Student
  * </p>
@@ -21,17 +25,17 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Student")
-public class Student implements Serializable{
-	
+public class Student implements Serializable {
+
 	/**
-	 * <h2> serialVersionUID</h2>
+	 * <h2>serialVersionUID</h2>
 	 * <p>
 	 * serialVersionUID
 	 * </p>
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * <h2> id</h2>
+	 * <h2>id</h2>
 	 * <p>
 	 * id
 	 * </p>
@@ -41,39 +45,46 @@ public class Student implements Serializable{
 	@Column(insertable = false)
 	private Integer id;
 	/**
-	 * <h2> name</h2>
+	 * <h2>name</h2>
 	 * <p>
 	 * name
 	 * </p>
 	 */
 	@Column
+	@NotNull
+	@Size(min = 2, message = "Name too short")
 	private String name;
 	/**
-	 * <h2> roll</h2>
+	 * <h2>roll</h2>
 	 * <p>
 	 * roll
 	 * </p>
 	 */
 	@Column
+	@NotNull(message = "Please enter roll number.")
 	private String roll;
 	/**
-	 * <h2> age</h2>
+	 * <h2>age</h2>
 	 * <p>
 	 * age
 	 * </p>
 	 */
 	@Column
+	@NotNull(message = "Student age must greater than 6.")
+	@Min(6)
 	private Integer age;
 	/**
-	 * <h2> gender</h2>
+	 * <h2>gender</h2>
 	 * <p>
 	 * gender
 	 * </p>
 	 */
 	@Column
+	@NotNull(message = "Please enter gender.")
 	private String gender;
+
 	/**
-	 * <h2> getId</h2>
+	 * <h2>getId</h2>
 	 * <p>
 	 * Get student id.
 	 * </p>
@@ -83,10 +94,11 @@ public class Student implements Serializable{
 	 */
 	public Integer getId() {
 		return id;
-		
+
 	}
+
 	/**
-	 * <h2> setId</h2>
+	 * <h2>setId</h2>
 	 * <p>
 	 * Set student id.
 	 * </p>
@@ -97,8 +109,9 @@ public class Student implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	/**
-	 * <h2> getName</h2>
+	 * <h2>getName</h2>
 	 * <p>
 	 * Get student name.
 	 * </p>
@@ -109,8 +122,9 @@ public class Student implements Serializable{
 	public String getName() {
 		return name;
 	}
+
 	/**
-	 * <h2> setName</h2>
+	 * <h2>setName</h2>
 	 * <p>
 	 * Set student name.
 	 * </p>
@@ -121,8 +135,9 @@ public class Student implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
-	 * <h2> getRoll</h2>
+	 * <h2>getRoll</h2>
 	 * <p>
 	 * Get student roll no.
 	 * </p>
@@ -133,8 +148,9 @@ public class Student implements Serializable{
 	public String getRoll() {
 		return roll;
 	}
+
 	/**
-	 * <h2> setRoll</h2>
+	 * <h2>setRoll</h2>
 	 * <p>
 	 * Set student roll no.
 	 * </p>
@@ -145,8 +161,9 @@ public class Student implements Serializable{
 	public void setRoll(String roll) {
 		this.roll = roll;
 	}
+
 	/**
-	 * <h2> getAge</h2>
+	 * <h2>getAge</h2>
 	 * <p>
 	 * Get student age.
 	 * </p>
@@ -157,8 +174,9 @@ public class Student implements Serializable{
 	public Integer getAge() {
 		return age;
 	}
+
 	/**
-	 * <h2> setAge</h2>
+	 * <h2>setAge</h2>
 	 * <p>
 	 * Set student age.
 	 * </p>
@@ -169,8 +187,9 @@ public class Student implements Serializable{
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+
 	/**
-	 * <h2> getGender</h2>
+	 * <h2>getGender</h2>
 	 * <p>
 	 * Get gender.
 	 * </p>
@@ -181,8 +200,9 @@ public class Student implements Serializable{
 	public String getGender() {
 		return gender;
 	}
+
 	/**
-	 * <h2> setGender</h2>
+	 * <h2>setGender</h2>
 	 * <p>
 	 * Set gender.
 	 * </p>
@@ -193,8 +213,9 @@ public class Student implements Serializable{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	/**
-	 * <h2> isDataNull</h2>
+	 * <h2>isDataNull</h2>
 	 * <p>
 	 * Check null data.
 	 * </p>
@@ -203,9 +224,6 @@ public class Student implements Serializable{
 	 * @return boolean
 	 */
 	public boolean isDataNull() {
-		return this.name == "" ||
-				this.roll == "" ||
-				this.age == null ||
-				this.gender == "" ? true : false;
+		return this.name == "" || this.roll == "" || this.age == null || this.gender == "" ? true : false;
 	}
 }

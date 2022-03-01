@@ -3,9 +3,10 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="students" extends="classic">
-		<put-attribute name="title" value="Student Management"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/JSP/students.jsp"></put-attribute>
-	</definition>
+				<definition name="students" extends="classic">
+								<put-attribute name="title"
+												value="Student Management"></put-attribute>
+								<put-attribute name="body"
+												value="/WEB-INF/JSP/students.jsp"></put-attribute>
+				</definition>
 </tiles-definitions>
