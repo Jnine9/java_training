@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  <definition name="classic" template="/WEB-INF/layout/classic.jsp">
+    <put-attribute name="title" value="" />
+    <put-attribute name="header" value="/WEB-INF/JSP/header.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/JSP/menu.jsp" />
+    <put-attribute name="body" value="" />
+    <put-attribute name="footer" value="/WEB-INF/JSP/footer.jsp" />
+  </definition>
+<!--   <definition name="/" extends="common"> -->
+<!--   	<put-attribute name="title" value="Student MVC CRUD"></put-attribute> -->
+<!--   	<put-attribute name="body" value="/WEB-INF/index.jsp"></put-attribute> -->
+<!--   </definition> -->
+  
+<!--   <definition name="edit" extends="common"> -->
+<!--   	<put-attribute name="title" value="Edit student Data"></put-attribute> -->
+<!--   	<put-attribute name="body" value="/WEB-INF/JSP/students.jsp"></put-attribute> -->
+<!--   </definition> -->
+</tiles-definitions>
