@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 
 /**
@@ -40,7 +43,7 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(insertable = false)
 	private Integer id;
 	/**
@@ -68,7 +71,8 @@ public class Student implements Serializable {
 	 * </p>
 	 */
 	@Column
-	@Min(value = 6,message="Student age must greater than 6.")
+	@NotNull(message="Please enter age.")
+	@Range(min = 6,message="Student age must greater than 6.")
 	private Integer age;
 	/**
 	 * <h2>gender</h2>

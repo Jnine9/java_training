@@ -8,10 +8,15 @@
 <%
 String path = request.getContextPath();
 
-String id = "";
+String id = "", action="";
 Integer ids = null;
 if (request.getAttribute("id") != null) {
 	ids = (int) request.getAttribute("id");
+}
+if(request.getAttribute("action") != null){
+	action = (String) request.getAttribute("action");
+}else{
+	action = "student";
 }
 %>
 <!DOCTYPE html>
@@ -47,7 +52,7 @@ if (request.getAttribute("id") != null) {
 				<br>
 				<h3>Student Data</h3>
 				<form:form method="post"
-						action="${pageContext.request.contextPath}/student"
+						action="${pageContext.request.contextPath}/${action }"
 						modelAttribute="student">
 						<div class="table-responsive">
 								<table class="table table-bordered" style="width: 500px">

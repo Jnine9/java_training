@@ -49,25 +49,16 @@ public class StudentController {
 	 * @return
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/student", method = RequestMethod.POST)
+	@RequestMapping(value = "add/student", method = RequestMethod.POST)
 	public ModelAndView addStudent(@Valid @ModelAttribute("student") Student std, BindingResult binder) {
 		ModelAndView model = new ModelAndView();
-
-		if (!binder.hasErrors()) {
+		if(!binder.hasErrors()) {
 			model.setViewName("redirect:/students");
-			try {
-				if (studentService.getStudentById(std.getId()) != null)
-					;
-				studentService.updateStudent(std);
-			} catch (NoResultException e) {
-				studentService.addStudent(std);
-			}
-		} else {
-			List<Student> stdList = studentService.getAllStudents();
-			model.addObject("studentList", stdList);
+			studentService.addStudent(std);
+		}else {
 			model.setViewName("students");
+			this.setDefaultModelView(model, "add/student");
 		}
-
 		return model;
 	}
 
@@ -86,10 +77,22 @@ public class StudentController {
 	public ModelAndView editStudent(@ModelAttribute("student") Student std, @PathVariable("id") Integer id) {
 		ModelAndView model = new ModelAndView("students");
 		std = studentService.getStudentById(id);
-		List<Student> stdList = studentService.getAllStudents();
 		model.addObject("student", std);
-		model.addObject("studentList", stdList);
 		model.addObject("id", id);
+		this.setDefaultModelView(model, "edit/student");
+		return model;
+	}
+	@RequestMapping(value = "edit/student",method = RequestMethod.POST)
+	public ModelAndView updateEdit(@Valid @ModelAttribute("student") Student std,BindingResult binder) {
+		ModelAndView model = new ModelAndView();
+		if(!binder.hasErrors()) {
+			model.setViewName("redirect:/students");
+			studentService.updateStudent(std);
+		}else {
+			model.addObject("student", std);
+			model.addObject("id", std.getId());
+			this.setDefaultModelView(model, "edit/student");
+		}
 		return model;
 	}
 
@@ -106,11 +109,11 @@ public class StudentController {
 	 */
 	@RequestMapping(value = "delete/{id}")
 	public ModelAndView deleteStudent(@ModelAttribute("student") Student std, @PathVariable("id") Integer id) {
-		ModelAndView model = new ModelAndView("students");
-		studentService.deleteStudent(id);
-		List<Student> stdList = studentService.getAllStudents();
-		model.addObject("student", std);
-		model.addObject("studentList", stdList);
+		ModelAndView model = new ModelAndView();
+		if(studentService.getStudentById(id)!=null) {
+			studentService.deleteStudent(id);
+		}
+		model.setViewName("redirect:/students");
 		return model;
 	}
 
@@ -127,26 +130,34 @@ public class StudentController {
 	@RequestMapping(value = "/students")
 	public ModelAndView homePage(@ModelAttribute("student") Student std) {
 		ModelAndView model = new ModelAndView("students");
-		List<Student> list = studentService.getAllStudents();
-		model.addObject("studentList", list);
+		this.setDefaultModelView(model, "add/student");
 		return model;
 	}
-
 	/**
-	 * <h2>getErrorMessage</h2>
+	 * <h2> isEditing</h2>
 	 * <p>
-	 * Get error message
+	 * Check if editing.
 	 * </p>
 	 *
-	 * @param binder BindingResult
+	 * @param std Student
 	 * @return
-	 * @return HashMap<String,String>
+	 * @return boolean
 	 */
-	public HashMap<String, String> getErrorMessage(BindingResult binder) {
-		HashMap<String, String> errorList = new HashMap<String, String>();
-		for (FieldError error : binder.getFieldErrors()) {
-			errorList.put(error.getObjectName(), error.getDefaultMessage());
+	public boolean isEditing(Student std) {
+		boolean res = false;
+		try {
+			if (studentService.getStudentById(std.getId()) != null)
+				;
+			res = true;
+		}catch(NoResultException e) {
+			res = false;
 		}
-		return errorList;
+		return res;
+	}
+	public void setDefaultModelView(ModelAndView model,String action) {
+		List<Student> list = studentService.getAllStudents();
+		model.addObject("studentList", list);
+		model.addObject("action", action);
+		model.setViewName("students");
 	}
 }
