@@ -82,6 +82,17 @@ public class StudentController {
 		this.setDefaultModelView(model, "edit/student");
 		return model;
 	}
+	/**
+	 * <h2> updateEdit</h2>
+	 * <p>
+	 * Update edit student.
+	 * </p>
+	 *
+	 * @param std Student
+	 * @param binder BindingResult
+	 * @return
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "edit/student",method = RequestMethod.POST)
 	public ModelAndView updateEdit(@Valid @ModelAttribute("student") Student std,BindingResult binder) {
 		ModelAndView model = new ModelAndView();
@@ -134,26 +145,15 @@ public class StudentController {
 		return model;
 	}
 	/**
-	 * <h2> isEditing</h2>
+	 * <h2> setDefaultModelView</h2>
 	 * <p>
-	 * Check if editing.
+	 * Set default model and view, to view all default list and it's specified action.
 	 * </p>
 	 *
-	 * @param std Student
-	 * @return
-	 * @return boolean
+	 * @param model ModelAndView
+	 * @param action String
+	 * @return void
 	 */
-	public boolean isEditing(Student std) {
-		boolean res = false;
-		try {
-			if (studentService.getStudentById(std.getId()) != null)
-				;
-			res = true;
-		}catch(NoResultException e) {
-			res = false;
-		}
-		return res;
-	}
 	public void setDefaultModelView(ModelAndView model,String action) {
 		List<Student> list = studentService.getAllStudents();
 		model.addObject("studentList", list);
