@@ -1,0 +1,1 @@
+<div class="footer">Copy &copy; right ............</div>
