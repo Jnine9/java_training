@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.wrapper input[type=text] {
+.wrapper input {
   width: 100%;
 }
 .clearfix::after {
