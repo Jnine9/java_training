@@ -9,5 +9,6 @@
 <body style="text-align:center;">
 <h2>Welcome to Student management</h2>
   <a href="${pageContext.request.contextPath}/logins">Let's go to login</a>
+  <h2>Hello World</h2>
 </body>
 </html>
